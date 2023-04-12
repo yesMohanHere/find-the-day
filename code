@@ -1,0 +1,97 @@
+#include <stdio.h>
+int date(void);
+
+int main()
+{
+ int v[100], n;
+ printf("number of test cases:");
+ scanf("%d",&n);
+ for(int k=0;k<n;k++){
+   v[k]=date();
+ }
+ for(int j=0;j<n;j++){
+   switch(v[j]){
+     case 0:
+       printf("\nsunday");
+       break;
+     case 1:
+       printf("\nmonday");
+       break;
+     case 2:
+       printf("\ntuesday");
+       break;
+     case 3:
+       printf("\nwednesday");
+       break;
+     case 4:
+       printf("\nthursday");
+       break;
+     case 5:
+       printf("\nfriday");
+       break;
+     case 6:
+       printf("\nsaturday");
+       break;
+ }
+ }
+  return 0;
+}
+int date(){
+  int d, m, y, mc, yc, val, yr;
+  printf("enter date(dd mm yyyy)");
+  scanf("%d%d%d",&d,&m,&y);
+  if(y>=1600&&y<=1699)
+    yc=6;
+  else if(y>=1700&&y<=1799)
+    yc=4;
+  else if(y>=1800&&y<=1899)
+    yc=2;
+  else if(y>=1900&&y<=1999)
+    yc=0;
+  else if(y>=2000&&y<=2099)
+    yc=6;
+    
+  switch(m){
+    case 1:
+      mc=0;
+      break;
+    case 2:
+      mc=3;
+      break;
+    case 3:
+      mc=3;
+      break;
+    case 4:
+      mc=6;
+      break;
+    case 5:
+      mc=1;
+      break;
+    case 6:
+      mc=4;
+      break;
+    case 7:
+      mc=6;
+      break;
+    case 8:
+      mc=2;
+      break;
+    case 9:
+      mc=5;
+      break;
+    case 10:
+      mc=0;
+      break;
+    case 11:
+      mc=3;
+      break;
+    default:
+      mc=5;
+  }
+  yr=y%10;
+  y/=10;
+  yr+=(y%10)*10;
+  val=d+mc+yr+(yr/4)+yc;
+  val%=7;
+  return val;
+}
